@@ -257,7 +257,7 @@ for (my $argc = 0; $argc <= $#ARGV; $argc++) {
 		$opt_dir = $local_dir;
 		$opt_file =~s /$local_dir//;
 		$opt_file =~s /^\///;
-		$opt_file = $remote_dir_root . $opt_file;
+#		$opt_file = $remote_dir_root . $opt_file;
     } elsif ($opt eq 'h') {
         $arg_help = "true"; 	
         usage(); 
@@ -379,6 +379,10 @@ sub get_files {
         push (@files, $single_file);
     }
 
+	if (scalar(@files) == 0) {
+		error("$prog: No files found to transfer!");
+	}
+
     return @files;
 }
 
@@ -456,6 +460,11 @@ sub ftp_files {
 	
 	    # site/dir
 	    $to_dir = $remote_dir_root . dirname($to_file);
+		$to_dir =~s /\.$//;
+		$to_file = $to_dir . "/" . $base_filename;
+		if ($suffix ne "" ) {
+			$to_file .= $suffix;
+		}
 
         if ($arg_inform eq "true") {
             my $file_exists = $ftp->exists($to_file);	    
