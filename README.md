@@ -28,3 +28,11 @@ in each program.
 ### INSTALLATION - see INSTALL file
 ### TODO    - see TODO file
 ### LICENSE - see LICENSE file
+
+
+## External Links
+Sourceforge:<br/>
+http://sourceforge.net/projects/sitetools<br/>
+<br/>
+Sourceforge:<br/>
+http://sitetools.sourceforge.net/<br/>
